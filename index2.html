@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
+
+  <script type="text/javascript">
+    var request, source;
+
+    window.onload = function () {
+      request = new XMLHttpRequest();
+      request.open("GET", "sample_voice.mp3", true);
+      request.responseType = "arraybuffer";
+      request.onload = completeOnLoad;
+      request.send();
+    };
+
+    function completeOnLoad() {
+      window.AudioContext = window.AudioContext || window.webkitAudioContext;
+      context = new AudioContext();
+      context.createBufferSource().start(0);
+
+      // オーディオをデコード
+      context.decodeAudioData(request.response, function (buf) {
+        source.buffer = buf;
+        source.loop = false;
+
+      });
+
+      source = context.createBufferSource();
+
+      var elem = document.getElementById("Play");
+      elem.addEventListener("click", playStart, false);
+    }
+
+    function playStart() {
+      source.connect(context.destination);
+      source.start(0);
+    }
+  </script>
+
+</head>
+<body>
+  <a id="Play" href="javascript:void(0);">再生</a><br />
+  <a id="Pasue" href="javascript:void(0);">停止</a><br />
+
+</body>
+</html>
