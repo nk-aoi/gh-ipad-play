@@ -8,24 +8,24 @@ $(function() {
   })
 })
  // ///////////////////////////////////////////
- // ˜^‰¹ŠÖŒW
+ // éŒ²éŸ³é–¢ä¿‚
  // ///////////////////////////////////////////
 
- // •Ï”’è‹`
+ // å¤‰æ•°å®šç¾©
  let localMediaStream = null;
  let localScriptProcessor = null;
  let audioSampleRate = null;
  let audioContext = null;
  let bufferSize = 1024;
- let audioData = []; // ˜^‰¹ƒf[ƒ^
+ let audioData = []; // éŒ²éŸ³ãƒ‡ãƒ¼ã‚¿
  let recordingFlg = false;
 
- // ˜^‰¹ƒoƒbƒtƒ@ì¬i˜^‰¹’†©“®‚ÅŒJ‚è•Ô‚µŒÄ‚Ño‚³‚ê‚éj
+ // éŒ²éŸ³ãƒãƒƒãƒ•ã‚¡ä½œæˆï¼ˆéŒ²éŸ³ä¸­è‡ªå‹•ã§ç¹°ã‚Šè¿”ã—å‘¼ã³å‡ºã•ã‚Œã‚‹ï¼‰
  function onAudioProcess(e) {
      if (!recordingFlg) return;
      console.log('onAudioProcess');
 
-     // ‰¹º‚Ìƒoƒbƒtƒ@‚ğì¬
+     // éŸ³å£°ã®ãƒãƒƒãƒ•ã‚¡ã‚’ä½œæˆ
      let input = e.inputBuffer.getChannelData(0);
      let bufferData = new Float32Array(bufferSize);
      for (let i = 0; i < bufferSize; i++) {
@@ -34,13 +34,13 @@ $(function() {
      audioData.push(bufferData);
  }
 
- // ‰ğÍŠJn
+ // è§£æé–‹å§‹
  function startRecording(evt_stream) {
-     // ‰æ–ÊƒAƒNƒZƒX‚Éƒ}ƒCƒN‚ğæ“¾
+     // ç”»é¢ã‚¢ã‚¯ã‚»ã‚¹æ™‚ã«ãƒã‚¤ã‚¯ã‚’å–å¾—
      console.log('startRecording');
      recordingFlg = true;
 
-     // æ“¾‚³‚ê‚Ä‚¢‚é‰¹ºƒXƒgƒŠ[ƒ€‚Ì˜^‰¹‚ğŠJn
+     // å–å¾—ã•ã‚Œã¦ã„ã‚‹éŸ³å£°ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®éŒ²éŸ³ã‚’é–‹å§‹
      localMediaStream = evt_stream;
 
      if (!navigator || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -49,7 +49,7 @@ $(function() {
      }
 
      audioContext = new (window.AudioContext || window.webkitAudioContext)();
-     // ƒTƒ“ƒvƒ‹ƒŒ[ƒg‚ğ•Û‚µ‚Ä‚¨‚­
+     // ã‚µãƒ³ãƒ—ãƒ«ãƒ¬ãƒ¼ãƒˆã‚’ä¿æŒã—ã¦ãŠã
      audioSampleRate = audioContext.sampleRate;
 
      let scriptProcessor = audioContext.createScriptProcessor(bufferSize, 1, 1);
@@ -62,7 +62,7 @@ $(function() {
        destinationNode = audioContext.destination
      }
 
-     // safari‚Å Web Audio API‚ğ“®‚©‚·‚½‚ßAæ‚ÉaudioContext‚ğ¶¬‚µAUserMedia‚ğ¶¬‚·‚é
+     // safariã§ Web Audio APIã‚’å‹•ã‹ã™ãŸã‚ã€å…ˆã«audioContextã‚’ç”Ÿæˆã—ã€UserMediaã‚’ç”Ÿæˆã™ã‚‹
      return navigator.mediaDevices.getUserMedia({audio: true})
        .then((stream) => {
          this._startRecordingWithStream(stream, destinationNode, scriptProcessor)
@@ -74,7 +74,7 @@ $(function() {
    }
 
    function _startRecordingWithStream(stream, destinationNode, scriptProcessor) {
-     // ƒ‹[ƒvˆ—‚ÌƒZƒbƒg
+     // ãƒ«ãƒ¼ãƒ—å‡¦ç†ã®ã‚»ãƒƒãƒˆ
      let mediastreamsource = audioContext.createMediaStreamSource(stream);
      mediastreamsource.connect(scriptProcessor);
      scriptProcessor.onaudioprocess = onAudioProcess;
@@ -82,7 +82,7 @@ $(function() {
      scriptProcessor.connect(destinationNode);
    }
 
- // ‰ğÍI—¹
+ // è§£æçµ‚äº†
  function endRecording() {
      console.log('endRecording');
      recordingFlg = false;
@@ -90,12 +90,12 @@ $(function() {
      // console.log(audioData);
 
      // console.log('blob = exportWAV(audioData)');
-     // ˜^‰¹‚Å‚«‚½‚Ì‚Å˜^‰¹ƒf[ƒ^‚ğwav‚É‚µ‚Äinput‚É”z’u•Ä¶ƒ{ƒ^ƒ“‚É“o˜^
+     // éŒ²éŸ³ã§ããŸã®ã§éŒ²éŸ³ãƒ‡ãƒ¼ã‚¿ã‚’wavã«ã—ã¦inputã«é…ç½®ï¼†å†ç”Ÿãƒœã‚¿ãƒ³ã«ç™»éŒ²
      let blob = exportWAV(audioData);
-     // ƒf[ƒ^‘—M—p‚Ìinputƒ^ƒO‚ğæ“¾
+     // ãƒ‡ãƒ¼ã‚¿é€ä¿¡ç”¨ã®inputã‚¿ã‚°ã‚’å–å¾—
      let wave_tag = document.getElementById('demo_speaking_wave_file');
 
-     // base64‰ÁH
+     // base64åŠ å·¥
      let reader = new FileReader();
      reader.readAsDataURL(blob);
      reader.onloadend = function() {
@@ -111,21 +111,21 @@ $(function() {
      // console.log('wavefile');
      // console.log(url);
 
-     // audioƒ^ƒO‚É˜^‰¹ƒf[ƒ^‚ğƒZƒbƒg
+     // audioã‚¿ã‚°ã«éŒ²éŸ³ãƒ‡ãƒ¼ã‚¿ã‚’ã‚»ãƒƒãƒˆ
      let player = document.getElementById('player');
      player.src =  url;
      player.load();
 
-     // audioData‚ğƒNƒŠƒA
+     // audioDataã‚’ã‚¯ãƒªã‚¢
      localMediaStream = null;
      localScriptProcessor = null;
      audioContext.close()
      audioContext = null;
-     audioData = []; // ˜^‰¹ƒf[ƒ^
+     audioData = []; // éŒ²éŸ³ãƒ‡ãƒ¼ã‚¿
  }
 
  // ///////////////////////////////////////////
- // waveƒtƒ@ƒCƒ‹ì¬ˆ—
+ // waveãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆå‡¦ç†
  // ///////////////////////////////////////////
 
  function exportWAV(audioData) {
@@ -147,20 +147,20 @@ $(function() {
              }
          };
 
-         writeString(view, 0, 'RIFF');  // RIFFƒwƒbƒ_
-         view.setUint32(4, 32 + samples.length * 2, true); // ‚±‚êˆÈ~‚Ìƒtƒ@ƒCƒ‹ƒTƒCƒY
-         writeString(view, 8, 'WAVE'); // WAVEƒwƒbƒ_
-         writeString(view, 12, 'fmt '); // fmtƒ`ƒƒƒ“ƒN
-         view.setUint32(16, 16, true); // fmtƒ`ƒƒƒ“ƒN‚ÌƒoƒCƒg”
-         view.setUint16(20, 1, true); // ƒtƒH[ƒ}ƒbƒgID
-         view.setUint16(22, 1, true); // ƒ`ƒƒƒ“ƒlƒ‹”
-         view.setUint32(24, sampleRate, true); // ƒTƒ“ƒvƒŠƒ“ƒOƒŒ[ƒg
-         view.setUint32(28, sampleRate * 2, true); // ƒf[ƒ^‘¬“x
-         view.setUint16(32, 2, true); // ƒuƒƒbƒNƒTƒCƒY
-         view.setUint16(34, 16, true); // ƒTƒ“ƒvƒ‹‚ ‚½‚è‚Ìƒrƒbƒg”
-         writeString(view, 36, 'data'); // dataƒ`ƒƒƒ“ƒN
-         view.setUint32(40, samples.length * 2, true); // ”gŒ`ƒf[ƒ^‚ÌƒoƒCƒg”
-         floatTo16BitPCM(view, 44, samples); // ”gŒ`ƒf[ƒ^
+         writeString(view, 0, 'RIFF');  // RIFFãƒ˜ãƒƒãƒ€
+         view.setUint32(4, 32 + samples.length * 2, true); // ã“ã‚Œä»¥é™ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚º
+         writeString(view, 8, 'WAVE'); // WAVEãƒ˜ãƒƒãƒ€
+         writeString(view, 12, 'fmt '); // fmtãƒãƒ£ãƒ³ã‚¯
+         view.setUint32(16, 16, true); // fmtãƒãƒ£ãƒ³ã‚¯ã®ãƒã‚¤ãƒˆæ•°
+         view.setUint16(20, 1, true); // ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆID
+         view.setUint16(22, 1, true); // ãƒãƒ£ãƒ³ãƒãƒ«æ•°
+         view.setUint32(24, sampleRate, true); // ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ãƒ¬ãƒ¼ãƒˆ
+         view.setUint32(28, sampleRate * 2, true); // ãƒ‡ãƒ¼ã‚¿é€Ÿåº¦
+         view.setUint16(32, 2, true); // ãƒ–ãƒ­ãƒƒã‚¯ã‚µã‚¤ã‚º
+         view.setUint16(34, 16, true); // ã‚µãƒ³ãƒ—ãƒ«ã‚ãŸã‚Šã®ãƒ“ãƒƒãƒˆæ•°
+         writeString(view, 36, 'data'); // dataãƒãƒ£ãƒ³ã‚¯
+         view.setUint32(40, samples.length * 2, true); // æ³¢å½¢ãƒ‡ãƒ¼ã‚¿ã®ãƒã‚¤ãƒˆæ•°
+         floatTo16BitPCM(view, 44, samples); // æ³¢å½¢ãƒ‡ãƒ¼ã‚¿
 
          return view;
      };
@@ -194,13 +194,13 @@ $(function() {
  function audioPlay() {
      let play_button = document.getElementById("btn_play_pause");
      play_button.onclick = new Function("audioPause();");
-     play_button.innerText = "’â~";
+     play_button.innerText = "åœæ­¢";
      document.getElementById("player").play();
  }
 
  function audioPause() {
      let play_button = document.getElementById("btn_play_pause");
      play_button.onclick = new Function("audioPlay();");
-     play_button.innerText = "Ä¶";
+     play_button.innerText = "å†ç”Ÿ";
      document.getElementById("player").pause();
  }
