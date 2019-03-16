@@ -9,18 +9,36 @@
 
 </head>
 <body>
+<h2>拡張子なし、type ない</h2>
 <audio src="voice" controls>
   <p><a src="voice">音声ファイルをダウンロード</a></p>
 </audio>
 
+<h2>拡張子なし、type wav</h2>
 <audio src="voice" controls type="audio/wav">
   <p><a src="voice">音声ファイルをダウンロード</a></p>
 </audio>
 
+<h2>拡張子 wav、type なし</h2>
 <audio src="voice.wav" controls>
   <p><a src="voice.wav">音声ファイルをダウンロード</a></p>
 </audio>
 
+<h1>source</h1>
+<h2>拡張子なし、type wav</h2>
+<audio controls>
+  <source src="voice" type="audio/wav">
+  <p><a src="voice">音声ファイルをダウンロード</a></p>
+</audio>
+
+<h2>wav 拡張子、type wav</h2>
+<audio controls>
+  <source src="voice.wav" type="audio/wav">
+  <p><a src="voice.wav">音声ファイルをダウンロード</a></p>
+</audio>
+
+<h1>sample</h1>
+<h2>サンプルボイス</h2>
 <audio src="sample_voice.mp3" controls>
   <p><a src="sample_voice.mp3">音声ファイルをダウンロード</a></p>
 </audio>
