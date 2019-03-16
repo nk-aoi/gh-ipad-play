@@ -6,6 +6,16 @@
 	<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
 
+<script>
+function ppppp() {
+	var audio = document.getElementById('ppa');
+	audio.load();
+	
+	document.getElementById('ssa').src = 'voice';
+	audio.load();
+	audio.play();
+}
+</script>
 
 </head>
 <body>
@@ -42,5 +52,11 @@
 <audio src="sample_voice.mp3" controls>
   <p><a src="sample_voice.mp3">音声ファイルをダウンロード</a></p>
 </audio>
+
+<h1>動的</h1>
+<audio id="ppa" controls>
+  <source id="ssa" src="" type="audio/wav">
+</audio>
+<button onClick="ppppp">Play</button>
 </body>
 </html>
