@@ -10,9 +10,9 @@
     />
 
     <script>
-      function aps_play() {
-        document.getElementById('aps_source').src = 'voice';
-        var audio = document.getElementById('aps_audio');
+      function aps_play(ids, url) {
+        document.getElementById('aps_source' + ids).src = url;
+        var audio = document.getElementById('aps_audio' + ids);
         audio.load();
         audio.play();
       }
@@ -38,7 +38,7 @@
     <h2>拡張子: -</h2>
     <h3>type: -</h3>
     <audio controls>
-      <source src="voice"/>
+      <source src="voice" />
     </audio>
 
     <h3>type: wav</h3>
@@ -49,7 +49,7 @@
     <h2>拡張子: wav</h2>
     <h3>type: -</h3>
     <audio controls>
-      <source src="voice.wav"/>
+      <source src="voice.wav" />
     </audio>
 
     <h3>type: wav</h3>
@@ -58,9 +58,15 @@
     </audio>
 
     <h4>* 動的</h4>
-    <audio id="aps_audio" controls>
-      <source id="aps_source" src="" type="audio/wav" />
+    <audio id="aps_audio1" controls>
+      <source id="aps_source1" src="" type="audio/wav" />
     </audio>
-    <button onClick="aps_play()">Play</button>
+    <button onClick="aps_play(1, 'voice')">Play</button>
+    <p>
+      <audio id="aps_audio2" controls>
+        <source id="aps_source2" src="" type="audio/wav" />
+      </audio>
+      <button onClick="aps_play(2, 'https://pictone.net/app-dev/play/voice/id/68')">Play</button>
+    </p>
   </body>
 </html>
