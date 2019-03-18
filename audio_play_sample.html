@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0"
+    />
+
+    <script>
+      function aps_play() {
+        document.getElementById('aps_source').src = 'voice';
+        var audio = document.getElementById('aps_audio');
+        audio.load();
+        audio.play();
+      }
+    </script>
+  </head>
+  <body>
+    <h1>audio タグ</h1>
+    <h2>拡張子: -</h2>
+    <h3>type: -</h3>
+    <audio src="voice" controls></audio>
+
+    <h3>type: wav</h3>
+    <audio src="voice" controls type="audio/wav"></audio>
+
+    <h2>拡張子: wav</h2>
+    <h3>type: -</h3>
+    <audio src="voice.wav" controls></audio>
+
+    <h3>type: wav</h3>
+    <audio src="voice.wav" controls type="audio/wav"></audio>
+
+    <h1>source タグ</h1>
+    <h2>拡張子: -</h2>
+    <h3>type: -</h3>
+    <audio controls>
+      <source src="voice"/>
+    </audio>
+
+    <h3>type: wav</h3>
+    <audio controls>
+      <source src="voice" type="audio/wav" />
+    </audio>
+
+    <h2>拡張子: wav</h2>
+    <h3>type: -</h3>
+    <audio controls>
+      <source src="voice.wav"/>
+    </audio>
+
+    <h3>type: wav</h3>
+    <audio controls>
+      <source src="voice.wav" type="audio/wav" />
+    </audio>
+
+    <h4>* 動的</h4>
+    <audio id="aps_audio" controls>
+      <source id="aps_source" src="" type="audio/wav" />
+    </audio>
+    <button onClick="aps_play()">Play</button>
+  </body>
+</html>
