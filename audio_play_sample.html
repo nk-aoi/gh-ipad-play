@@ -17,6 +17,14 @@
         audio.play();
       }
     </script>
+
+        <script>
+          function test() {
+            var open_can_audio = new Audio("https://pictone.net/app-dev/play/voice/id/68");
+            open_can_audio.load();
+            open_can_audio.play();
+          }
+        </script>
   </head>
   <body>
     <h1>audio タグ</h1>
@@ -69,10 +77,13 @@
     </audio>
     <button onClick="aps_play(2, 'https://pictone.net/app-dev/play/voice/id/68')">Play</button>
 
-    <h4>* 動的（Basic内）</h4>
+    <h4>* 動的（Basic外）</h4>
     <audio id="aps_audio3" controls>
       <source id="aps_source3" src="" type="audio/wav" />
     </audio>
     <button onClick="aps_play(3, 'https://pictone.net/aps/voice')">Play</button>
+
+    <h4>* betsu</h4>
+    <button onClick="test()">Play</button>
   </body>
 </html>
