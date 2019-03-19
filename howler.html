@@ -8,29 +8,30 @@
   <title>Document</title>
   <script src="howler.js"></script>
   <script>
-      function sss1() {
-        var sound = new Howl({
-          src: ['voice']
-        });
-        sound.play();
-      }
+    function sss1() {
+      var sound = new Howl({
+        src: ['voice'],
+        format: ['wav'],
+      });
+      sound.play();
+    }
 
-      function sss2() {
-        var sound = new Howl({
-          src: ['https://pictone.net/app-dev/play/voice/id/68'],
-          format: ['wav'],
-        });
-        sound.play();
-      }
+    function sss2() {
+      var sound = new Howl({
+        src: ['https://pictone.net/app-dev/play/voice/id/68'],
+        format: ['wav'],
+      });
+      sound.play();
+    }
 
-      function sss3() {
-        var sound = new Howl({
-          src: ['https://pictone.net/aps/voice.wav'],
-          format: ['wav'],
-        });
-        sound.play();
-      }
-    </script>
+    function sss3() {
+      var sound = new Howl({
+        src: ['https://pictone.net/aps/voice.wav'],
+        format: ['wav'],
+      });
+      sound.play();
+    }
+  </script>
 </head>
 
 <body>
