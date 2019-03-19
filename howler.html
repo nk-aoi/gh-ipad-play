@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <script src="howler.js"></script>
-    <script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <script src="howler.js"></script>
+  <script>
       function sss1() {
         var sound = new Howl({
           src: ['voice']
@@ -16,14 +17,26 @@
 
       function sss2() {
         var sound = new Howl({
-          src: ['https://pictone.net/app-dev/play/voice/id/68']
+          src: ['https://pictone.net/app-dev/play/voice/id/68'],
+          format: ['wav'],
+        });
+        sound.play();
+      }
+
+      function sss3() {
+        var sound = new Howl({
+          src: ['https://pictone.net/aps/voice.wav'],
+          format: ['wav'],
         });
         sound.play();
       }
     </script>
-  </head>
-  <body>
-    <button onclick="sss1()">play</button><br />
-    <button onclick="sss2()">play</button>
-  </body>
+</head>
+
+<body>
+  <button onclick="sss1()">play</button><br />
+<button onclick="sss2()">play</button><br />
+<button onclick="sss3()">play</button><br />
+</body>
+
 </html>
