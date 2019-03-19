@@ -7,15 +7,23 @@
     <title>Document</title>
     <script src="howler.js"></script>
     <script>
-      function sss() {
+      function sss1() {
         var sound = new Howl({
-          src: ['voice.wav']
+          src: ['voice']
+        });
+        sound.play();
+      }
+
+      function sss2() {
+        var sound = new Howl({
+          src: ['https://pictone.net/app-dev/play/voice/id/68']
         });
         sound.play();
       }
     </script>
   </head>
   <body>
-    <button onclick="sss()">play</button>
+    <button onclick="sss1()">play</button><br />
+    <button onclick="sss2()">play</button>
   </body>
 </html>
