@@ -5,10 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 <script>
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
-var context = new AudioContext();
-
-window.onload = function(){
-}
+var context = null;
 
 var processor = null;
 var num = 0;
@@ -51,6 +48,8 @@ function handleSuccess( stream ){
 }
 
 function startRec(){
+  context = new AudioContext();
+ 
   $('#recBtn').css( 'display', 'none' );
   $('#stopBtn').css( 'display', 'block' );
 
