@@ -24,7 +24,7 @@ function handleSuccess( stream ){
   //window.dotnsf_hack_for_mozzila = input;
   input.connect( processor );
   processor.onaudioprocess = function( e ){
-    //. ‰¹ºƒf[ƒ^
+    //. éŸ³å£°ãƒ‡ãƒ¼ã‚¿
     var inputdata = e.inputBuffer.getChannelData(0);
     //console.log( inputdata );
 
@@ -71,35 +71,35 @@ function stopRec(){
       audioBuffer.getChannelData( i ).set( floatData[i] );
     }
     
-    console.log( audioBuffer ); //. ‚±‚ê‚ğÄ¶‚·‚é
+    console.log( audioBuffer ); //. ã“ã‚Œã‚’å†ç”Ÿã™ã‚‹
     
     var source = context.createBufferSource();
 
-    source.buffer = audioBuffer;           //. ƒI[ƒfƒBƒIƒf[ƒ^‚ÌÀ‘ÌiAudioBuffer ƒCƒ“ƒXƒ^ƒ“ƒXj
-    source.loop = false;                   //. ƒ‹[ƒvÄ¶‚·‚é‚©H
-    source.loopStart = 0;                  //. ƒI[ƒfƒBƒIŠJnˆÊ’ui•b’PˆÊj
-    source.loopEnd = audioBuffer.duration; //. ƒI[ƒfƒBƒII—¹ˆÊ’ui•b’PˆÊj
-    source.playbackRate.value = 1.0;       //. Ä¶‘¬“x•ƒsƒbƒ`
+    source.buffer = audioBuffer;           //. ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒ¼ã‚¿ã®å®Ÿä½“ï¼ˆAudioBuffer ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ï¼‰
+    source.loop = false;                   //. ãƒ«ãƒ¼ãƒ—å†ç”Ÿã™ã‚‹ã‹ï¼Ÿ
+    source.loopStart = 0;                  //. ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªé–‹å§‹ä½ç½®ï¼ˆç§’å˜ä½ï¼‰
+    source.loopEnd = audioBuffer.duration; //. ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªçµ‚äº†ä½ç½®ï¼ˆç§’å˜ä½ï¼‰
+    source.playbackRate.value = 1.0;       //. å†ç”Ÿé€Ÿåº¦ï¼†ãƒ”ãƒƒãƒ
 
     source.connect( context.destination );
 
     //. for lagacy browsers
     source.start( 0 );
     source.onended = function( event ){
-      //. ƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰íœ
+      //. ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ©å‰Šé™¤
       source.onended = null;
       document.onkeydown = null;
       num = 0;
       duration = 0.0;
       length = 0;
 
-      //. ƒI[ƒfƒBƒII—¹
+      //. ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªçµ‚äº†
       source.stop( 0 );
 
       console.log( 'audio stopped.' );
     };
     
-    //. floatData[] i‚Ìæ“ª‚Ìˆê•”j‚ğƒOƒ‰ƒt•`‰æ‚·‚é
+    //. floatData[] ï¼ˆã®å…ˆé ­ã®ä¸€éƒ¨ï¼‰ã‚’ã‚°ãƒ©ãƒ•æç”»ã™ã‚‹
     var dotnum = 1024;
     var ctx = document.getElementById( 'myChart' ).getContext( '2d' );
     var labels = [];
@@ -139,7 +139,7 @@ function availableData( arr ){
 <body>
   <div id="page">
     <div>
-      <h2>ƒI[ƒfƒBƒIƒoƒbƒtƒ@‹Šo‰»</h2>
+      <h2>ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒãƒƒãƒ•ã‚¡è¦–è¦šåŒ–</h2>
       <input type="button" id="recBtn" value="Rec" onClick="startRec();" style="display:block;"/>
       <input type="button" id="stopBtn" value="Stop" onClick="stopRec();" style="display:none;"/>
     </div>
